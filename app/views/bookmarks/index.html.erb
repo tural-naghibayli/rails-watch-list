@@ -1,0 +1,9 @@
+<h1>Bookmarks</h1>
+<h2>Bookmarks page </h2>
+
+
+<ol>
+  <% @bookmarks.each do |bookmark| %>
+    <li><%= bookmark.comment %> | <%= bookmark.movie.title %> | <%= link_to "X", bookmark, method: :delete, data: { confirm: 'Are you sure?' } %> </li>
+  <% end %>
+</ol>
