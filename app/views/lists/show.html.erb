@@ -1,16 +1,24 @@
 <h1>List details</h1>
 
-<%= @list.name %>
+
 
 <h2>Bookmarks</h2>
+
+<% if @list.photo.attached? %>
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @list.photo.key, height: 300, crop: :fill %>')">
+    <%= @list.name %>
+  </div>
+<% else %>
+  <p>  <%= @list.name %> Category image</p>
+<% end %>
+
+
 <ol>
 <% @list.bookmarks.each do |bookmark| %>
   <li><%= bookmark.movie.title %> |  <%= bookmark.comment %> <%= link_to "X", bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></li>
 <% end %>
 </ol>
 <br>
-
-
 
 
 <br>
